@@ -5,17 +5,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 
-options = webdriver.ChromeOptions()
-options.add_argument("--user-data-dir=/home/username/.config/google-chrome")
 
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome()
 
-driver.get('https://x-main.d33rile30xkzn5.amplifyapp.com/customers/')
+driver.get('https://x-main.d33rile30xkzn5.amplifyapp.com')
 input("Press ENTER...")
 
 df = pd.read_excel('wallet_data.xlsx', usecols='A,B')
-
-
+driver.get('https://x-main.d33rile30xkzn5.amplifyapp.com/customers/')
+time.sleep(5)
 for i in df.index:
     print(str(df['wallet_balance'][i]))
     try:
