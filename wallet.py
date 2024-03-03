@@ -19,10 +19,10 @@ input_pass.send_keys('Admin@123')
 enter_button=driver.find_element(
             By.XPATH, '/html/body/div/div/div[1]/div/div/div/div/div[2]/form/button[2]')
 enter_button.click()
-time.sleep(5)
+time.sleep(2)
 df = pd.read_excel('wallet_data.xlsx', usecols='A,B')
 driver.get('https://x-main.d33rile30xkzn5.amplifyapp.com/customers/')
-time.sleep(5)
+time.sleep(2)
 for i in df.index:
     print(str(df['wallet_balance'][i]))
     try:
