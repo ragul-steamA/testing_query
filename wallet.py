@@ -10,7 +10,16 @@ driver = webdriver.Chrome()
 
 driver.get('https://x-main.d33rile30xkzn5.amplifyapp.com')
 input("Press ENTER...")
-
+input_email= driver.find_element(
+            By.XPATH, '/html/body/div/div/div[1]/div/div/div/div/div[2]/form/div[1]/div/div/div/div/input')
+input_email.send_keys('arvind@steam-a.com')
+input_pass= driver.find_element(
+            By.XPATH, '/html/body/div/div/div[1]/div/div/div/div/div[2]/form/div[2]/div/div/div/div/span/input')
+input_pass.send_keys('Admin@123')
+enter_button=driver.find_element(
+            By.XPATH, '/html/body/div/div/div[1]/div/div/div/div/div[2]/form/button[2]')
+enter_button.click()
+time.sleep(5)
 df = pd.read_excel('wallet_data.xlsx', usecols='A,B')
 driver.get('https://x-main.d33rile30xkzn5.amplifyapp.com/customers/')
 time.sleep(5)
@@ -25,7 +34,7 @@ for i in df.index:
             Keys.HOME).key_up(Keys.CONTROL).key_up(Keys.SHIFT).send_keys(Keys.BACK_SPACE)
         actions.send_keys(str(df['phone'][i]))
         actions.perform()
-        time.sleep(1)
+        time.sleep(1.5)
         wallet_element = driver.find_element(
             By.XPATH, '/html/body/div[1]/div/div[1]/div/main/div/div/div/div[2]/div/div[3]/div/div/div/div/div/table/tbody/tr[2]/td[7]/div')
         s=wallet_element.text.replace(",","")
